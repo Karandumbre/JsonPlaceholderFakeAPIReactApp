@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Route, BrowserRouter as Router,Redirect } from 'react-router-dom'
+import List from './Components/List';
+import Details from './Components/Details';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+<Router>
+  <div>
+    <Route exact path="/" render={() => <Redirect to="/list" />}/>
+    <Route path="/list" component={List} />
+    <Route path="/details/:id" exact component={Details} />
+  </div>
+</Router>,
   document.getElementById('root')
 );
 
